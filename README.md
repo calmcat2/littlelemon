@@ -1,49 +1,39 @@
 # littlelemon
 ## **Overview**
 
-This reading will introduce you to the scope of things you will cover in this Capstone Project course. 
+This is a capstone project in Django, specifically building an API for the Little Lemon restaurant using the Django REST Framework. 
 
-This course covers building a capstone project in Django, specifically building an API for the Little Lemon restaurant using the Django REST Framework. The Capstone project enables you to demonstrate multiple skills from the Certificate by solving an authentic real-world problems. Each module includes a brief recap of, and links to, content that you have covered in previous courses in this program.
+This project has the following functions:
+- Using Django to serve static HTML content.
 
-To complete this course, you will need back-end developer experience. Additionally, it always helps to have a can-do attitude!
+- The application connects the backend to a MySQL database. Database is not available in Github.
 
-This course consists of four modules:
+- Menu and Table booking APIs are implemented.
 
-## **Module 1: Starting the project**
+- The application sets up with user registration and authentication.
 
-This introductory module will give you some general information about the capstone project.
+- The application contains unit tests.
 
-You'll also review the process of setting up your coding environment, tracking your code using Git and working with the Django framework.
+- The API be tested with the Insomnia REST client.
 
-The purpose is to guide you through setting up and beginning your work on the project.
-
-By the end of this module, you will have completed the following:
-
--   Compose a back-end application using multiple skills
-
--   Use Django to serve static HTML content
-
--   Commit the project to a Git repository
-
-
-## **Module 2: Project Functionality**
-
-The second module of this course begins with a revision of Models. You will revisit the concepts of working with databases and models in Django.
-
-You will set up the MySQL connection, and create the required models for the web application. Then, you will build the menu and table booking APIs using the Django Rest Framework.
-
-## **Module 3: Security and Testing**
-
-In this module, you'll focus on user authentication and testing the API. You will revisit the concepts to help you secure your app and APIs.
-
-You will add user authentication by setting up user registration, login and logout functionality. Then you will implement the code to secure the table booking API.
-
-Next, you will test your application code using unit testing and test the API endpoints using the Insomnia REST client.
-
-Finally, you will push your commits to GitHub.
-
-By the end of this module, you will have completed the following:
-
--   Set up user registration and authentication
-
--   Test the application with unit tests and Insomnia
+### Test
+- Test customer-facing web functions by navigating through url *http://127.0.0.1:8000/*
+    - **Home** page: shows static home page.
+    - **About** page: shows static About page.
+    - **Menu** page: shows all menu items.
+    - **Book** page: accepts new reservations and returns confirmation.
+- You may use the following credentials to test out the API.
+    - Superuser
+        - username: **admin** password: **admin**
+    - Staff
+        - usernmae: **Bob** password: **Pass123!**
+    - To test Djoser, use the following:
+        - GET *http://127.0.0.1:8000/auth/users* Embed with a valid credential -> Show all users. You can also use this endpoint to register a new user. 
+        - POST *http://127.0.0.1:8000/auth/token/login/* Embed with a valid credential -> returns a token for the user. 
+        - POST *http://127.0.0.1:8000/auth/token/logout/* Use this endpoint to logout user (remove user authentication token)
+        - Test out Djoser API endpoints as shown in the [document](https://djoser.readthedocs.io/en/latest/getting_started.html). 
+    - To test Menu APIs, use the following:
+        - GET *http://127.0.0.1:8000/menu* -> Shows all Menu with no authentication needed. 
+        - GET *http://127.0.0.1:8000/api/menu-items/\<int:pk>* Embed with a valid credential -> shows details of individual Menu items.
+    - To test Booking API, use the following:
+        - POST *http://127.0.0.1:8000/api/booking/tables* Embed with a valid credential-> Show all the bookings under the login user's name. If the login user is admin, then show all the bookings.
