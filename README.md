@@ -6,7 +6,7 @@ This is a capstone project in Django, specifically building an API for the Littl
 This project has the following functions:
 - Using Django to serve static HTML content.
 
-- The application connects the backend to a MySQL database. Database is not available in Github.
+- The application connects the backend to a MySQL database. MySQL Database is not available in Github. SQLite is included for testing purpose.
 
 - Menu and Table booking APIs are implemented.
 
@@ -16,7 +16,8 @@ This project has the following functions:
 
 - The API be tested with the Insomnia REST client.
 
-### Test
+### Test locally
+Run command <code>python manage.py runserver</code> under the directory littlelemon 
 - Test customer-facing web functions by navigating through url *http://127.0.0.1:8000/*
     - **Home** page: shows static home page.
     - **About** page: shows static About page.
