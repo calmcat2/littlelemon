@@ -34,6 +34,6 @@ This project has the following functions:
         - Test out Djoser API endpoints as shown in the [document](https://djoser.readthedocs.io/en/latest/getting_started.html). 
     - To test Menu APIs, use the following:
         - GET *http://127.0.0.1:8000/menu* -> Shows all Menu with no authentication needed. 
-        - GET *http://127.0.0.1:8000/api/menu-items/\<int:pk>* Embed with a valid credential -> shows details of individual Menu items.
+        - GET *http://127.0.0.1:8000/api/menu-items/<int:pk>* Embed with a valid credential -> shows details of individual Menu items.
     - To test Booking API, use the following:
         - POST *http://127.0.0.1:8000/api/booking/tables* Embed with a valid credential-> Show all the bookings under the login user's name. If the login user is admin, then show all the bookings.
