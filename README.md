@@ -6,7 +6,7 @@ This is a capstone project in Django, specifically building an API for the Littl
 This project has the following functions:
 - Using Django to serve static HTML content.
 
-- The application connects the backend to a MySQL database. MySQL Database is not available in Github. SQLite is included for testing purpose.
+- The application connects the backend to a MySQL database. MySQL Database is not available in Github.
 
 - Menu and Table booking APIs are implemented.
 
