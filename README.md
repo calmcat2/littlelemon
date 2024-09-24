@@ -21,7 +21,9 @@ This is a simple version of the project using an SQLite database (included) for 
 3. If everything is set up correctly, run `python manage.py runserver`.
 
 4. The server should start on localhost at port 8000. In your browser, go to `http://127.0.0.1:8000/`.
-
+   
+5. To access the Django admin portal, use url `http://127.0.0.1:8000/admin`. An admin user is already created with username `admin` and password `Admin`.
+   
 ### Available API Endpoints
 
 - **Authentication**
