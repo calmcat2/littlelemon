@@ -17,16 +17,19 @@ import os
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG=True
-
-ALLOWED_HOSTS = []
-
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-v966rxdmv_phocaurd%))rr))!x%wvl6ms85+_f=$!^g(2n9o2'
+
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = os.getenv("DEBUG")
+#DEBUG=True
+
+ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS').split(',')
+CSRF_TRUSTED_ORIGINS = os.environ.get('CSRF_TRUSTED_ORIGINS').split(',')
 
 # Application definition
 
@@ -41,30 +44,11 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'djoser',
+    'storages',
 ]
 
-# DATABASES = {   
-#     'default': {   
-#         'ENGINE': 'django.db.backends.mysql',   
-#         'NAME': 'mydatabase',   
-#         'USER': 'admindjango',   
-#         'PASSWORD': 'employee@123!',   
-#         'HOST': '127.0.0.1',   
-#         'PORT': '3306',   
-#         'OPTIONS': {   
-#             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"   
-#         }   
-#     }   
-# } 
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
-
 MIDDLEWARE = [
+    'restaurant.middleware.HealthCheckMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -79,7 +63,8 @@ ROOT_URLCONF = 'littlelemon.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['templates'],
+        # 'DIRS': ['templates'],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -98,14 +83,19 @@ WSGI_APPLICATION = 'littlelemon.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
-
-
+DATABASES = {   
+    'default': {   
+        'ENGINE': 'django.db.backends.mysql',   
+        'NAME': os.getenv("MYSQL_DATABASE"),   
+        'USER': os.getenv("MYSQL_USER"),   
+        'PASSWORD': os.getenv("MYSQL_PASSWORD"),   
+        'HOST': os.getenv("DB_HOST"),   
+        'PORT': os.getenv("DB_PORT"),   
+        'OPTIONS': {   
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"   
+        }   
+    }   
+} 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
 
@@ -142,15 +132,9 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT=os.getenv("STATIC_ROOT")
-
-# STATICFILES_DIRS = [
-#     BASE_DIR / "static",
-# ]
-
-# if os.getenv("STATIC_ROOT"):
-#     STATIC_ROOT=os.getenv("STATIC_ROOT")
-# else:
-#     STATIC_ROOT=os.path.join(BASE_DIR,"static")
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'restaurant', 'static'),
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
