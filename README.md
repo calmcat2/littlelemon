@@ -1,3 +1,5 @@
+This version includes slight feature differences compared to the original version. This version will be used for container image in the further development. 
+
 This Django-based web application provides essential features, including:
 
 1. **Table Reservation**
