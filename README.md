@@ -1,20 +1,15 @@
 # littlelemon
 ## **Overview**
 
-This is a capstone project in Django, specifically building an API for the Little Lemon restaurant using the Django REST Framework. 
+This is a capstone project for Meta Back-End Developer Professional in Coursera, specifically building an API for the Little Lemon restaurant using the Django REST Framework. 
 
 This project has the following functions:
 - Using Django to serve static HTML content.
-
-- The application connects the backend to a MySQL database. MySQL Database is not available in Github.
-
+- The application connects the backend to a MySQL database (MySQL Database is not provided).
 - Menu and Table booking APIs are implemented.
-
 - The application sets up with user registration and authentication.
-
 - The application contains unit tests.
-
-- The API be tested with the Insomnia REST client.
+- The API can be tested with the Insomnia REST client.
 
 ### Test locally
 Run command <code>python manage.py runserver</code> under the directory littlelemon 
